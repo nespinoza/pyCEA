@@ -11,3 +11,5 @@ USAGE
 -----
 
 Follow the run.py code to check the usage. Can't be easier than that. 
+
+To generate the input files for CEA see: http://www.grc.nasa.gov/WWW/CEAWeb/RP-1311-P2.pdf

@@ -71,7 +71,7 @@ def read_abundances(filename):
     f.close()
     return Z,name,10**(logN)
     
-def calcCEA(T,P,name,N,only_consider_these,prefix='benchmark'):
+def calcCEA(T,P,name,N,only_consider_these,prefix='benchmark',ions = False):
     """
     This function generates input files for CEA, runs them, and 
     spits out the equilibrium compositions:
@@ -80,15 +80,18 @@ def calcCEA(T,P,name,N,only_consider_these,prefix='benchmark'):
     if not os.path.exists('CEAoutput'):
         os.mkdir('CEAoutput')
     f = open('CEAoutput/'+prefix+'_'+str(T)+'_'+str(P)+'.inp','w')
-    f.write('# problem dataset: disk\n')
-    f.write('problem tp ions\n')
+    f.write('# problem dataset: transpec\n')
+    if ions:
+        f.write('problem tp ions\n')
+    else:
+        f.write('problem tp\n')
     f.write('  p(bar) = '+str(P)+'\n')
     f.write('  t(k) = '+str(T)+'\n')
     f.write('reac\n')
     for i in range(len(name)):
         f.write('  na '+name[i]+' moles = '+str(N[i]).upper()+'\n')
     f.write('only '+only_consider_these)
-    f.write('output calories siunits trace 1e-13\n')
+    f.write('output calories siunits trace 1e-20\n')
     f.write('end')
     f.close()
     runCEA('CEAoutput/'+prefix+'_'+str(T)+'_'+str(P)+'.inp')
@@ -113,12 +116,13 @@ def readCEA(T,P,prefix='benchmark'):
         elif line[:21] == ' CALCULATIONS STOPPED':
             break
         else:
-            species.append(vec[0])
-            if '-' in vec[1]:
-                num,exp = vec[1].split('-')
-                moles.append(np.double(num+'e-'+exp))
-            else:
-                moles.append(np.double(vec[1]))
+            if '*' not in vec[1]:
+                species.append(vec[0])
+                if '-' in vec[1]:
+                    num,exp = vec[1].split('-')
+                    moles.append(np.double(num+'e-'+exp))
+                else:
+                    moles.append(np.double(vec[1]))
     f.close()
     return species,moles
 
@@ -154,3 +158,4 @@ def check_elements(name,only_consider_these):
                     break
     return idx
 
+checkCEA()

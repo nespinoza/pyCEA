@@ -28,3 +28,11 @@ OUTPUT
 The output is a python dictionary that has the mixing ratios of the resulting compounds at 
 each P-T point. At the same point, the folder CEAoutput is created which saves the actual 
 outputs from CEA which are read by this program.
+
+ACKNOWLEDGMENTS
+---------------
+
+I would like to thank Mike Line who got me started with the basics of CEA, Jonathan Fortney 
+for suggesting using this for my equilibrium calculations and the Kavli Summer Program in 
+Astrophysics which was the initiative that got the three of us together in order to pull this 
+project forward!

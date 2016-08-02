@@ -7,11 +7,8 @@ import subprocess,os
 
 ############################################################################
 only_consider_these =  '\n e- H He Ti V O C N S Na K Fe\n'+\
-                       '  H2 CO OH SH N2 O2 TiO H2O C2\n'+\
-                       '  CH CN CS NH NO SN SO S2 C2H HCN C2H2\n'+\
-                       '  CH4 CO2 TiO2 FeO NH2 NH3 CH2 CH3\n'+\
-                       '  H2S KOH NaOH H+ H- Na+ K+ VO VO2 FeH\n'+\
-                       '  Fe(L) MgSiO3(II) MgSiO3(III) Na2S(L) H2O(L)\n'
+                       '  H+ H- Na+ K+\n'+\
+                       '  Fe(L) H2O(L)\n'
 
 prefix = 'example'
 input_pt_filename = 'input.pt'

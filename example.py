@@ -16,9 +16,6 @@ input_mr_filename = 'input.mr'
 
 ############################################################################
 
-# Check everything is ok with CEA:
-pyCEA.checkCEA()
-
 # Load mixing ratios of elements:
 fin = open(input_mr_filename,'r')
 nameo = []

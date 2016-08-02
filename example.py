@@ -34,7 +34,7 @@ idx = pyCEA.check_elements(nameo,only_consider_these)
 name = np.array(nameo)[idx]
 N = np.array(No)[idx]
 
-# Load TP profile:
+# Load PT profile:
 P,T = np.loadtxt(input_pt_filename,unpack=True)
 
 # Calculate chemical equilibrium:

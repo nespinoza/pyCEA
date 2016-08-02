@@ -10,6 +10,20 @@ It is assumed the resulting folder name containing all the files is CEA+FORTRAN.
 USAGE
 -----
 
-Follow the run.py code to check the usage. Can't be easier than that. 
+Follow the example.py code to check the usage. Can't be easier than that. The code 
+needs two inputs:
 
-To generate the input files for CEA see: http://www.grc.nasa.gov/WWW/CEAWeb/RP-1311-P2.pdf
+- The input.mr, which has the mixing ratios of the elements that form the expected 
+  compounds. The input.mr has the solar system nebula abundances from Lodders (2003).
+
+- The input.pt is a pressure-temperature profile. In this case, it is made up in order 
+  for you to be able to test the code. This will calculate the equilibrium composition at 
+  each P-T pair in the file.
+
+The code makes sure everything is in order before compiling. 
+
+OUTPUT
+------
+
+The output is a python dictionary that has the mixing ratios of the resulting compounds at 
+each P-T point.
